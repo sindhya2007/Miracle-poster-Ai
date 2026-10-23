@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Poster is Ready</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="ready">
+        <h1>Your Poster is Ready! 🎉</h1>
+
+        <p>Your poster has been generated successfully.</p>
+
+        <div class="poster-preview">
+            <img id="readyLogo" alt="Business Logo">
+    <h2 id="readyBusinessName"></h2>
+    <p id="readyOffer"></p>
+    <p id="readyContact"></p>
+    <p id="readyTemplate"></p>
+    <p id="readyCategory"></p>
+</div>
+
+       <button onclick="downloadPoster()">
+    Download Poster
+</button>
+        <button onclick="goHome()">
+    Back to Home
+</button>
+<button onclick="createAnotherPoster()">
+    Create Another Poster
+</button>
+    </div>
+    <script>
+    const businessName = localStorage.getItem("businessName");
+    const offer = localStorage.getItem("offer");
+    const contact = localStorage.getItem("contact");
+    const template = localStorage.getItem("template");
+    const category = localStorage.getItem("businessCategory");
+    const logo = localStorage.getItem("logo");
+
+const readyLogo = document.getElementById("readyLogo");
+
+if (logo) {
+    readyLogo.src = logo;
+    readyLogo.style.display = "block";
+}
+else {
+    readyLogo.style.display = "none";
+}
+
+    document.getElementById("readyBusinessName").textContent =
+        businessName || "Your Business Name";
+
+    document.getElementById("readyOffer").textContent =
+        offer || "Your Offer";
+
+    document.getElementById("readyContact").textContent =
+        contact || "Contact Number";
+
+    document.getElementById("readyTemplate").textContent =
+        "Template: " + (template || "Classic");
+
+    document.getElementById("readyCategory").textContent =
+    "Business Category: " + (category || "Not selected");
+
+        const posterPreview = document.querySelector(".poster-preview");
+
+if (template === "Classic") {
+    posterPreview.style.background =
+        "linear-gradient(135deg, #FFF8E7, #FDE68A)";
+}
+else if (template === "Modern") {
+    posterPreview.style.background =
+        "linear-gradient(135deg, #E0F2FE, #C4B5FD)";
+}
+else if (template === "Festival") {
+    posterPreview.style.background =
+        "linear-gradient(135deg, #FBCFE8, #FED7AA)";
+}
+
+         function downloadPoster() {
+        window.print();
+    }
+
+    function goHome() {
+    localStorage.clear();
+    window.location.href = "business.html";
+}
+function createAnotherPoster() {
+    localStorage.clear();
+    window.location.href = "business.html";
+}
+</script>
+
+</body>
+</html>
