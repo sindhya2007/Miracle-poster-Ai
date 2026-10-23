@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Poster</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="create">
+        <h1>Create Your Poster</h1>
+        <p>Customize your poster with your details</p>
+        <p id="createCategory"></p>
+
+        <h2>Choose a Template</h2>
+
+        <div class="templates">
+    <button onclick="chooseTemplate('Classic', this)">
+        Classic
+    </button>
+
+    <button onclick="chooseTemplate('Modern', this)">
+        Modern
+    </button>
+
+    <button onclick="chooseTemplate('Festival', this)">
+        Festival
+    </button>
+</div>
+        <img id="createLogo" alt="Business Logo">
+       <div class="poster-box">
+    <h2 id="posterBusinessName">Your Poster will appear here</h2>
+    <p id="posterOffer"></p>
+    <p id="posterContact"></p>
+</div>
+
+        <button onclick="generatePoster()">
+    Generate Poster
+</button>
+    </div>
+    <script>
+    const businessName = localStorage.getItem("businessName");
+    const offer = localStorage.getItem("offer");
+    const contact = localStorage.getItem("contact");
+    const logo = localStorage.getItem("logo");
+
+const createLogo = document.getElementById("createLogo");
+
+if (logo) {
+    createLogo.src = logo;
+    createLogo.style.display = "block";
+} else {
+    createLogo.style.display = "none";
+}
+
+    document.getElementById("posterBusinessName").textContent =
+        businessName || "Your Business Name";
+
+    document.getElementById("posterOffer").textContent =
+        offer || "Your Offer";
+
+    document.getElementById("posterContact").textContent =
+        contact || "Contact Number";
+</script>
+<script>
+    function chooseTemplate(templateName, selectedButton) {
+        localStorage.setItem("template", templateName);
+
+        const posterBox = document.querySelector(".poster-box");
+        const buttons = document.querySelectorAll(".templates button");
+        const category = localStorage.getItem("businessCategory");
+
+document.getElementById("createCategory").textContent =
+    "Business Category: " + (category || "Not selected");
+
+        buttons.forEach(function(button) {
+            button.classList.remove("selected");
+        });
+
+        selectedButton.classList.add("selected");
+
+        if (templateName === "Classic") {
+            posterBox.style.background =
+                "linear-gradient(135deg, #FFF8E7, #FDE68A)";
+        }
+        else if (templateName === "Modern") {
+            posterBox.style.background =
+                "linear-gradient(135deg, #E0F2FE, #C4B5FD)";
+        }
+        else if (templateName === "Festival") {
+            posterBox.style.background =
+                "linear-gradient(135deg, #FBCFE8, #FED7AA)";
+        }
+
+        posterBox.style.border = "2px solid #7C3AED";
+    }
+
+    function generatePoster() {
+    const template = localStorage.getItem("template");
+
+    if (!template) {
+        alert("Please select a template first");
+        return;
+    }
+
+    window.location.href = "loading.html";
+}
+</script>
+
+</body>
+</html>
