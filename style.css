@@ -1,0 +1,380 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F0FF;
+}
+
+.splash {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 60px;
+    font-weight: bold;
+    color: #7C3AED;
+}
+
+h1 {
+    margin-top: 15px;
+    font-size: 28px;
+    color: #1F1F1F;
+}
+
+p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666666;
+}
+
+button {
+    margin-top: 25px;
+    width: 180px;
+    height: 48px;
+    border: none;
+    border-radius: 20px;
+    background-color: #7C3AED;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.business {
+    min-height: 100vh;
+    padding: 40px 25px;
+    text-align: center;
+}
+
+.business h1 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #1F1F1F;
+}
+
+.business p {
+    margin-top: 8px;
+    color: #666666;
+}
+
+.business input {
+    width: 100%;
+    max-width: 350px;
+    height: 45px;
+    margin-top: 25px;
+    padding: 0 16px;
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 350px;
+    margin: 25px auto;
+}
+
+.categories button {
+    width: 100%;
+    height: 80px;
+    margin-top: 0;
+    background-color: white;
+    color: #1F1F1F;
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.details,
+.create,
+.loading,
+.ready {
+    min-height: 100vh;
+    padding: 40px 25px;
+    text-align: center;
+}
+
+.details h1,
+.create h1,
+.loading h1,
+.ready h1 {
+    margin-top: 0;
+    font-size: 26px;
+    color: #1F1F1F;
+}
+
+.details p,
+.create p,
+.loading p,
+.ready p {
+    margin-top: 10px;
+    color: #666666;
+}
+
+.details input {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    height: 45px;
+    margin: 18px auto;
+    padding: 0 15px;
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+}
+
+.create h2 {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.templates {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.templates button {
+    width: 100px;
+    height: 45px;
+    margin-top: 0;
+    background-color: white;
+    color: #1F1F1F;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+}
+
+.poster-box,
+.poster-preview {
+    width: 100%;
+    max-width: 350px;
+    height: 220px;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px dashed #B8A4E8;
+    border-radius: 15px;
+    color: #777777;
+}
+
+.loader {
+    width: 55px;
+    height: 55px;
+    margin: 80px auto 25px;
+    border: 6px solid #E5D9FF;
+    border-top: 6px solid #7C3AED;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ready button {
+    display: block;
+    margin: 18px auto;
+}
+.poster-preview {
+    flex-direction: column;
+    padding: 25px;
+    background: linear-gradient(135deg, #FDE68A, #FBCFE8, #DDD6FE);
+    border: none;
+    color: #1F1F1F;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.poster-preview h2 {
+    font-size: 25px;
+    color: #7C3AED;
+    margin-bottom: 15px;
+}
+
+.poster-preview p {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #333333;
+}
+@media print {
+    body {
+        background-color: white;
+    }
+
+    .ready > h1,
+    .ready > p,
+    .ready > button {
+        display: none;
+    }
+
+    .ready {
+        padding: 0;
+    }
+
+    .poster-preview {
+        width: 100%;
+        max-width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        border: none;
+        box-shadow: none;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+.poster-preview h2 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #7C3AED;
+    margin-bottom: 12px;
+}
+
+.poster-preview p {
+    text-align: center;
+    font-size: 16px;
+    color: #333333;
+    margin-top: 8px;
+}
+
+.poster-preview p:last-child {
+    font-size: 13px;
+    color: #666666;
+    margin-top: 18px;
+}
+.templates button.selected {
+    background-color: #7C3AED;
+    color: white;
+    border: 2px solid #5B21B6;
+}
+button {
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #5B21B6;
+    transform: scale(1.05);
+}
+
+.categories button:hover,
+.templates button:hover {
+    background-color: #EDE9FE;
+    color: #7C3AED;
+    border-color: #7C3AED;
+}
+
+.templates button.selected:hover {
+    background-color: #5B21B6;
+    color: white;
+}
+
+.details label {
+    display: block;
+    margin-top: 20px;
+    color: #555555;
+    font-size: 14px;
+}
+
+.details input[type="file"] {
+    height: auto;
+    padding: 12px;
+    background-color: white;
+}
+#readyLogo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+#createLogo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+    border-radius: 12px;
+}
+/* Final Poster Design */
+
+.poster-preview {
+    width: 320px;
+    min-height: 360px;
+    margin: 25px auto;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#readyLogo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 12px;
+}
+
+#readyBusinessName {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #4A2C2A;
+}
+
+#readyOffer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #D94670;
+    margin: 10px 0;
+}
+
+#readyContact,
+#readyTemplate,
+#readyCategory {
+    font-size: 14px;
+    margin: 6px 0;
+    color: #4A4A4A;
+}
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .ready > h1,
+    .ready > p,
+    .ready > button {
+        display: none;
+    }
+
+    .poster-preview {
+        width: 320px;
+        min-height: 360px;
+        margin: 0 auto;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+}
