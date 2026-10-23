@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="details">
+        <h1>Business Details</h1>
+        <p>Enter your business details</p>
+        <p id="selectedCategory"></p>
+
+        <input type="text" id="businessName" placeholder="Business Name">
+
+        <input type="text" id="offer" placeholder="Offer or Discount">
+
+        <input type="text" id="contact" placeholder="Contact Number">
+        <label for="logo">Upload Logo (Optional)</label>
+
+<input type="file" id="logo" accept="image/*">
+
+        <button onclick="saveDetails()">
+    Continue
+</button>
+    </div>
+    <script>
+    const category = localStorage.getItem("businessCategory");
+
+    document.getElementById("selectedCategory").textContent =
+        "Selected Business: " + (category || "Not selected");
+
+    function saveDetails() {
+
+        const businessName =
+            document.getElementById("businessName").value.trim();
+
+        const offer =
+            document.getElementById("offer").value.trim();
+
+        const contact =
+            document.getElementById("contact").value.trim();
+
+        const logoFile =
+            document.getElementById("logo").files[0];
+
+        if (businessName === "" || offer === "" || contact === "") {
+            alert("Please fill all details");
+            return;
+        }
+
+        localStorage.setItem("businessName", businessName);
+        localStorage.setItem("offer", offer);
+        localStorage.setItem("contact", contact);
+
+        if (logoFile) {
+
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                localStorage.setItem("logo", reader.result);
+                window.location.href = "create.html";
+            };
+
+            reader.readAsDataURL(logoFile);
+
+        } else {
+
+            localStorage.removeItem("logo");
+            window.location.href = "create.html";
+
+        }
+    }
+</script>
+
+</body>
+</html>
