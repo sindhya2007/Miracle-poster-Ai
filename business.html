@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Business</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="business">
+        <h1>Choose Your Business</h1>
+        <p>Select your business category</p>
+        <input type="text" id="searchBox" placeholder="Search your business">
+
+        <div class="categories">
+            <button onclick="selectBusiness('Bakery')">
+    Bakery
+</button>
+
+<button onclick="selectBusiness('Boutique')">
+    Boutique
+</button>
+
+<button onclick="selectBusiness('Salon')">
+    Salon
+</button>
+
+<button onclick="selectBusiness('Restaurant')">
+    Restaurant
+</button>
+
+<button onclick="selectBusiness('Mobile Shop')">
+    Mobile Shop
+</button>
+
+<button onclick="selectBusiness('Gym')">
+    Gym
+</button>
+        </div>
+    </div>
+    <script>
+    const searchBox = document.getElementById("searchBox");
+    const categories = document.querySelectorAll(".categories button");
+
+    searchBox.addEventListener("input", function () {
+        const searchText = searchBox.value.toLowerCase();
+
+        categories.forEach(function (category) {
+            const name = category.textContent.toLowerCase();
+
+            if (name.includes(searchText)) {
+                category.style.display = "block";
+            } else {
+                category.style.display = "none";
+            }
+        });
+    });
+
+    function selectBusiness(categoryName) {
+    localStorage.setItem("businessCategory", categoryName);
+    window.location.href = "details.html";
+}
+</script>
+
+</body>
+</html>
